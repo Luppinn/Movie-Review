@@ -1,0 +1,21 @@
+.selector-for-some-widget {
+    box-sizing: content-box;
+  }
+
+ body {
+   background-color: black;
+ }
+
+  #screen {
+    padding: 0px;
+    color: aqua;
+    width: 100px;
+  }
+
+  .h1{
+    font-size: 8px;
+  }
+
+  #catalogo {
+    padding: 0px;
+  }

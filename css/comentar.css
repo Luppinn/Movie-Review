@@ -1,0 +1,33 @@
+body {
+    background-color: #e8e4e3;
+    margin: auto;
+}
+
+#inputtext {
+    margin-top: 15px;
+    width: auto;
+    height: 100px;
+    display: inline-flex;
+}
+
+#inputnota {
+    margin-top: 15px;
+    width: 150px;
+    height: 50px;
+    display: inline-flex;
+}
+
+#img {
+    display: inline-flex;
+    height: 500px;
+    width: 50x;
+}
+
+#screen {
+    background-color: #e8e4e3;
+    padding: 0px;
+}
+
+col {
+    width: 150px;
+}
