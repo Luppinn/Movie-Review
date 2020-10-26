@@ -1,5 +1,6 @@
 <?php
 include '../controller/DBconnection.php';
+$id = $_GET["id"];
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +30,13 @@ include '../controller/DBconnection.php';
         <?php
         //Get the Movie's Image
             $images = array();
-            $images = $db->query("SELECT file_name FROM images"); 
+            $images = $db->query("SELECT file_name FROM images WHERE id_filme =$id"); 
             $images = $images->fetch_assoc();
         ?>
 
         <?php 
-            $comentario = $db->query("SELECT comentario FROM avaliacao");
-            $nota = $db->query("SELECT nota FROM avaliacao");
+            $comentario = $db->query("SELECT comentario FROM avaliacao WHERE id_filme = $id");
+            $nota = $db->query("SELECT nota FROM avaliacao WHERE id_filme = $id");
 
             $comentario = $comentario->fetch_assoc();
             $nota = $nota->fetch_assoc();
@@ -46,7 +47,7 @@ include '../controller/DBconnection.php';
             <div class="row">
                 <div class="col-3">
                     <div class="container-sm" id="img" style="width:300px;height:300px;display:grid;margin:0px;">
-                        <?php echo"<img src='/uploads/$images[file_name]' style='width:250px;height:300px'>"?>
+                        <?php echo"<img src='../uploads/$images[file_name]' style='width:250px;height:300px'>"?>
                     </div>
                 </div>
                     <div class="col">
@@ -55,7 +56,7 @@ include '../controller/DBconnection.php';
                         <hr style="border: 1px solid grey;">
                             <ul class="list-group">
                                 <?php
-                                    $cmnt = $db->query("SELECT nota,comentario FROM avaliacao ORDER BY id desc");
+                                    $cmnt = $db->query("SELECT nota,comentario FROM avaliacao WHERE id_filme = $id ORDER BY id desc");
                                     while($exibir=mysqli_fetch_array($cmnt)){
                                        // print_r($exibir);
                                         $comentario = $exibir['comentario'];
@@ -64,7 +65,7 @@ include '../controller/DBconnection.php';
                                         echo "
                                             <div class='container-md' id='comment'>
                                                 <p style='display:inline-block'>Nota: $nota</p>
-                                                <button type='button' onclick='fdeletar(\"$comentario\")' class='btn btn-outline-danger' style='width:75px;display:inline-block;float:right'>Delete</button>
+                                                <button type='button' onclick='fdeletar(\"$comentario\", \"$id\")' class='btn btn-outline-danger' style='width:75px;display:inline-block;float:right'>Delete</button>
                                                 <p>$comentario</p>
                                             </div>
                                         ";
@@ -76,7 +77,7 @@ include '../controller/DBconnection.php';
             </div>
             <div class="row">
                 <div class="col-3">
-                    <form action="inserirComentario.php?id=<?php print $_GET['id'];?>" method="POST" style="margin-left:15px;vertical-align:top;float:left">
+                    <form action="../controller/inserirComentario.php?id=<?php print $_GET['id'];?>" method="POST" style="margin-left:15px;vertical-align:top;float:left">
                         <input id="inputtext" type="text" name="comentario" class="form-control" id="formGroupExampleInput" placeholder="Comentario" required>
                         <input id="inputnota"type="number" name="nota" class="form-control" id="formGroupExampleInput" placeholder="Nota [0~5]"required>
                         <input type="submit" value="submit" onclick="reload()">

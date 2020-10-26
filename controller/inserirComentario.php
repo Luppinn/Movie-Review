@@ -1,3 +1,4 @@
+<script src="../js/script.js"></script>
 <?php
 include 'DBconnection.php';
 
@@ -9,12 +10,12 @@ if($_POST != NULL){
 
     
     if($nota>=1 and $nota<=5){
-        $sql = "INSERT INTO avaliacao (id,nota,comentario) VALUES ($id,$nota,'$comentario')";
+        $sql = "INSERT INTO avaliacao (id_filme,nota,comentario) VALUES ($id,$nota,'$comentario')";
         mysqli_query($db,$sql);
     } else {
-        echo("Nota deve ser um numero de 1 a 5!");
+       validation();
     }
 }
 
-header('Location: comentar.php?id='.$_GET['id']);
+header('Location: ../view/comentar.php?id='.$_GET['id']);
 ?>

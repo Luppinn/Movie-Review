@@ -12,7 +12,7 @@
 
   <body>
   <nav class="navbar navbar-light" style="background-color:white" id="navbar">
-  <a class="navbar-brand" href="/php/index.php">
+  <a class="navbar-brand" href="/view/index.php">
     <img src="/assets/network3.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
     Contabilivre Movies
   </a>
